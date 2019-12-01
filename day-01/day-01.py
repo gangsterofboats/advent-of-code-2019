@@ -37,5 +37,5 @@ def part_two(filen):
             sum_fuel += m
     print(sum_fuel)
 
-part_one(fl)
-part_two(fl)
+part_one(fl) # 3455717
+part_two(fl) # 5180690
