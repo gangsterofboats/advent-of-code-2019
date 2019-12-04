@@ -138,42 +138,6 @@ sub part_one
 
 sub part_two
 {
-    foreach my $noun (0..99)
-    {
-        foreach my $verb (0..99)
-        {
-            my @ipt = @{$_[0]};
-            $ipt[1] = $noun;
-            $ipt[2] = $verb;
-            my $ptr = 0;
-            my $pos_f = 0;
-            my $pos_s = 0;
-            my $pos_t = 0;
-
-            while ($ipt[$ptr] != 99)
-            {
-                if ($ipt[$ptr] == 1)
-                {
-                    $pos_f = $ipt[$ptr + 1];
-                    $pos_s = $ipt[$ptr + 2];
-                    $pos_t = $ipt[$ptr + 3];
-                    $ipt[$pos_t] = $ipt[$pos_f] + $ipt[$pos_s];
-                }
-                elsif ($ipt[$ptr] == 2)
-                {
-                    $pos_f = $ipt[$ptr + 1];
-                    $pos_s = $ipt[$ptr + 2];
-                    $pos_t = $ipt[$ptr + 3];
-                    $ipt[$pos_t] = $ipt[$pos_f] * $ipt[$pos_s];
-                }
-                $ptr += 4;
-            }
-            if ($ipt[0] == 19690720)
-            {
-                say (($noun * 100) + $verb);
-            }
-        }
-    }
 }
 
 my $filename = 'day-03-input.txt';
