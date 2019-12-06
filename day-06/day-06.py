@@ -15,39 +15,28 @@
 # You should have received a copy of the GNU Affero General Public License     #
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.       #
 ################################################################################
+import networkx as nx
 import pprint
 
 pp = pprint.PrettyPrinter(indent=4)
 
 # Function definition
 
-def planet_chain(satellite, plan_paths):
-    if plan_paths[satellite] in plan_paths:
-        return [plan_paths[satellite]]+planet_chain(plan_paths[satellite],plan_paths)
-    else:
-        return []
-
 def part_one(puzz_input):
-    orbits = {}
+    orbits = nx.DiGraph()
 
     for l in puzz_input:
         p, s = l.split(')')
-        orbits[s] = p
-
-    paths = 0
-    for sat in orbits:
-        paths = len(planet_chain(sat, orbits)) + paths + 1
-    print(paths)
+        orbits.add_edge(p, s)
+    print(nx.transitive_closure(orbits).size())
 
 def part_two(puzz_input):
-    orbits = {}
+    orbits = nx.Graph()
 
     for l in puzz_input:
         p, s = l.split(')')
-        orbits[s] = p
-    frm = set(planet_chain('YOU', orbits))
-    tow = set(planet_chain('SAN', orbits))
-    print(len(frm ^ tow))
+        orbits.add_edge(p, s)
+    print(nx.shortest_path_length(orbits, 'YOU', 'SAN') - 2)
 
 # Main program
 
