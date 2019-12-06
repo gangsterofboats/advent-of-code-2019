@@ -45,7 +45,8 @@ def part_one(tape):
             ipt[ipt[ptr + 1]] = int(stv)
             ptr += 2
         elif op_code[3:] == '04':
-            print(ipt[ipt[ptr + 1]])
+            otpt = ipt[ipt[ptr + 1]] if op_code[2] == '0' else ipt[ptr + 1]
+            print(otpt)
             ptr += 2
 
 def part_two(tape):
@@ -71,7 +72,8 @@ def part_two(tape):
             ipt[ipt[ptr + 1]] = int(stv)
             ptr += 2
         elif op_code[3:] == '04':
-            print(ipt[ipt[ptr + 1]])
+            otpt = ipt[ipt[ptr + 1]] if op_code[2] == '0' else ipt[ptr + 1]
+            print(otpt)
             ptr += 2
         elif op_code[3:] == '05':
             f = ipt[ipt[ptr + 1]] if op_code[2] == '0' else ipt[ptr + 1]
