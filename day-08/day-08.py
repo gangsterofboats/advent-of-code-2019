@@ -36,12 +36,9 @@ def part_two(puzz_input):
     ipt = list(map(int, puzz_input))
     layers = numpy.array(ipt).reshape([-1, 150])
     layer = numpy.argmax(layers < 2, axis = 0)
-    image = numpy.array([layers[val][idx] for idx, val in enumerate(layer)]).reshape([6,25])
+    image = numpy.array([layers[y, x] for x, y in enumerate(layer)]).reshape([6,25])
     for line in image:
-        l = ''
-        for pixel in line:
-            l += '*' if pixel == 1 else ' '
-        print(l)
+        print(''.join(['#' if i == 1 else ' ' for i in line]))
 
 # Main program
 
